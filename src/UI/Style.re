@@ -358,17 +358,6 @@ let rec extractViewStyles = (styles: list(allProps)): list(viewStyleProps) =>
   };
 
 /*
-   Helper function to narrow down a list of all possible style props to
-   one specific to a type of component
- */
-let rec extractViewStyles = (styles: list(allProps)): list(viewStyleProps) =>
-  switch (styles) {
-  | [] => []
-  | [#viewStyleProps as v, ...list] => [v, ...extractViewStyles(list)]
-  | [_, ...list] => extractViewStyles(list)
-  };
-
-/*
    Apply style takes all style props and maps each to the correct style
    and is used to build up the style record, which is eventually
    used to apply styling to elements.
